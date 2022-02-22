@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- CSS読込 -->
+<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/application.css}">
+<!-- JS読込 -->
+<script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+<title>ユーザー登録</title>
+</head>
+<body>
+<div class="container page shadow bg-body rounded">
+    <h1 class="heading mb-3">ユーザー登録</h1>
+    <div class="border border-3"></div>
+      <div class="regist-content">
+        <form method="post" action="/signup" th:object="${employeeForm}">
+        	<div th:text="${message}"></div>
+          <div class="regist-table">
+            <!-- 社員番号 -->
+            <div class="row pt-2 pb-2 form-group">
+              <div class="col-4" th:text="#{employee_id}"></div>
+              <div class="col-6">
+              	<input type="text" class="form-control" th:field="*{employee_id}" th:errorclass="is-invalid"/>
+              	<div class="invalid-feedback" th:errors="*{employee_id}"></div>
+           	  </div>
+            </div>
+            
+            <!-- 氏名 -->
+            <div class="row pt-2 pb-2 form-group">
+              <div class="col-4"  th:text="#{employee_name}"></div>
+              <div class="col-6">
+              	<input type="text"class="form-control" th:field="*{employee_name}"  th:errorclass="is-invalid"/>
+              	<div class="invalid-feedback" th:errors="*{employee_name}"></div>
+              </div>
+            </div>
+            
+            <!-- 性別 -->
+            <div class="row pt-2 pb-2 form-group">
+              <div class="col-4"  th:text="#{gender}"></div>
+              <div class="gender-radio col-6 form-check-inline">
+              	<div  th:each="item : ${genderMap}" class="radio-margin">
+	                <input class="form-check-input ms-2" type="radio" th:value="${item.value}" th:field="*{gender}"/>
+	                <label class="form-check-label" th:text="${item.key}"></label>
+              	</div>
+              </div>
+            </div>
+            
+            <!-- 電話番号 -->
+            <div class="row pt-2 pb-2 form-group">
+              <div class="col-4"  th:text="#{employee_phone}"></div>
+              <div class="col-6">
+              	<input type="text"class="form-control" th:field="*{employee_phone}" th:errorclass="is-invalid"/>
+              	<div class="invalid-feedback" th:errors="*{employee_phone}"></div>
+              </div>
+            </div>
+            
+            <!-- メールアドレス -->
+            <div class="row pt-2 pb-2 form-group">
+              <div class="col-4" th:text="#{employee_email}"></div>
+              <div class="col-6">
+              	<input type="text" class="form-control" th:field="*{employee_email}" th:errorclass="is-invalid"/>
+	            <div class="invalid-feedback" th:errors="*{employee_email}"></div>
+              </div>
+            </div>
+            
+            <!-- パスワード -->
+            <div class="row pt-2 pb-2 form-group">
+              <div class="col-4" th:text="#{password}"></div>
+              <div class="col-6">
+              	<input type="text" class="form-control" th:field="*{password}" th:errorclass="is-invalid"/>
+	            <div class="invalid-feedback" th:errors="*{password}"></div>
+               </div>
+            </div>
+            
+            <!-- 入社年月日 -->
+            <div class="row pt-2 pb-2 form-group">
+              <div class="col-4" th:text="#{date_of_entry}"></div>
+              <div class="col-6">
+              	<input type="text"class="form-control" th:field="*{date_of_entry}"
+              		 th:errorclass="is-invalid" placeholder="yyyy/MM/dd"/>
+	            <div class="invalid-feedback" th:errors="*{date_of_entry}"></div>
+              </div>
+            </div>
+          <div class="regist-btn mt-5"><input type="submit" value="登録" class="btn btn-primary"/></div>
+          </div>
+        </form>
+      </div>
+    </div>
+</body>
+</html>

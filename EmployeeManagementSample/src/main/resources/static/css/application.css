@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+body {
+  background-color: #f8fbf8 !important
+}
+
+.container.page {
+  background-color: #ffff;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 50px;
+  max-width: 880px;
+  width: 100%;
+}
+
+.heading {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.regist-table {
+  text-align: center;
+  margin: 0 auto;
+  font-size: 20px;
+  padding: 24px;
+  max-width: 880px;
+  width: 100%;
+}
+
+.regist-table tr td {
+  font-weight: bold;
+}
+
+.regist-content {
+  margin-top: 50px;
+}
+
+.regist-btn {
+  text-align: end;
+  margin-top: 12px;
+}
+
+.regist-btn .btn {
+  width: 100px;
+}
+
+.radio-margin {
+	margin-left: 20px;
+}

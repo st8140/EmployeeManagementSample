@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Mapperとxmlをマッピング -->
+<mapper namespace="com.example.repository.UserMapper">
+	
+	<!-- ユーザー１件登録 -->
+	<insert id="insertOne">
+		insert into employees (
+			employee_id,
+			employee_name,
+			gender,
+			employee_phone,
+			employee_email,
+			password,
+			date_of_entry
+		)
+		values (
+			#(employee_id),
+			#(employee_name),
+			#(gender),
+			#(employee_phone),
+			#(employee_email),
+			#(password),
+			#(date_of_entry)
+		);	
+	</insert>
+</mapper>

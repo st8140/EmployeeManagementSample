@@ -1,23 +1,29 @@
-package com.example.form;
+package com.example.domain;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
-import org.springframework.data.annotation.Id;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 
+@Entity
 @Data
-public class EmployeeForm {
+@Table(name="employees")
+public class Employee {
 	
 	@Id
-	@NotNull(message="{employee_id_check}")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer employee_id;
 	
 	@NotBlank

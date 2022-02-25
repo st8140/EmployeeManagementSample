@@ -8,23 +8,22 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
-import org.springframework.data.annotation.Id;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.example.domain.ValidGroup1;
 
 import lombok.Data;
 
 @Data
 public class EmployeeForm {
-	
-	@Id
-	@NotNull(message="{employee_id_check}")
+
 	private Integer employee_id;
 	
 	@NotBlank
 	private String employee_name;
 	
 	@NotNull(message="{gender_check}")
-	private Integer gender = 1;
+	private Integer gender;
 	
 	@NotBlank
 	@Pattern(regexp="^(070|080|090)-[0-9]{4}-[0-9]{4}$",

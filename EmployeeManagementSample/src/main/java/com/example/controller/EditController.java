@@ -28,7 +28,7 @@ public class EditController {
 	@GroupSequence({ Default.class, ValidGroup1.class })
 	interface GroupOrder {}
 	
-	
+	//編集画面へ遷移
 	@GetMapping("user/{employee_id}/edit")
 	public String toEdit(
 			@PathVariable("employee_id") Integer employee_id,
@@ -38,6 +38,7 @@ public class EditController {
 		return "/user/edit";
 	}
 	
+	//更新処理
 	@PostMapping(value="user/{employee_id}/edit", params="update")
 	public String editEmployeeData(
 			@PathVariable Integer employee_id,
@@ -55,6 +56,7 @@ public class EditController {
 		}	
 	}
 	
+	//削除処理
 	@PostMapping(value="user/{employee_id}/edit", params="delete")
 	public String deleteEmployeeData(@PathVariable("employee_id") Integer employee_id, Model model) {
 		eService.delete(employee_id);

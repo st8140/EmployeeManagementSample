@@ -4,6 +4,12 @@ body {
   background-color: #f8fbf8 !important
 }
 
+.error {
+	color: #ff0000;
+	font-weight: vold;
+	text-align: center;
+}
+
 .container.page {
   background-color: #ffff;
   border-radius: 5px;
@@ -47,4 +53,9 @@ body {
 
 .radio-margin {
 	margin-left: 20px;
+}
+
+.col-6.form-check-inline.ms-3 {
+    margin-left: 15px;
+    
 }

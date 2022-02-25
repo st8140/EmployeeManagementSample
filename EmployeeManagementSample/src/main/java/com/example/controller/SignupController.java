@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.validation.GroupSequence;
 import javax.validation.groups.Default;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.application.service.EmployeeApplicationService;
 import com.example.domain.Employee;
 import com.example.domain.ValidGroup1;
+import com.example.form.EmployeeForm;
 import com.example.service.EmployeeService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -38,34 +40,32 @@ public class SignupController {
 	
 	//ユーザー登録画面の表示
 	@GetMapping("/signup")
-	public String getSignup(@ModelAttribute Employee Employee, Model model, Locale locale) {
+	public String getSignup(@ModelAttribute EmployeeForm eForm, Model model, Locale locale) {
 		Map<String, Integer> genderMap = eApplicationService.getGenderMap(locale);
 		model.addAttribute("genderMap", genderMap);
+		eForm.setGender(1);
 		return "signup";
 	}
 	
 	//ユーザー登録処理
 	@PostMapping("/signup")
 	public String postSignup(
-			@ModelAttribute @Validated(GroupOrder.class)  Employee employee, 
+			@ModelAttribute @Validated(GroupOrder.class)  EmployeeForm eForm, 
 			BindingResult result, Model model, Locale locale ) {
-		log.info(employee.toString());
+		Employee emp = new Employee();
 		
 		if (result.hasErrors()) {
 			model.addAttribute("message", "エラーが発生しました");
-			return getSignup(employee, model, locale);
+			return getSignup(eForm, model, locale);
 		} else {
-			log.info(employee.toString());
+			log.info(eForm.toString());
 			
 			//ユーザー登録
-			eService.insertEmployeeData(employee);			
-			return "redirect:/allList";
+			BeanUtils.copyProperties(eForm, emp);
+			eService.insert(emp);	
+			
+			//ユーザー一覧画面へ遷移
+			return "redirect:/user/allList";
 		}
-	}
-	
-	//ユーザー一覧画面表示
-	@GetMapping("/allList")
-	public String getAllList(@ModelAttribute Employee employee, Model model, Locale locale) {
-		return "allList";
 	}
 }

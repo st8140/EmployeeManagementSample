@@ -52,15 +52,8 @@ public class EditController {
 		} else {
 			BeanUtils.copyProperties(eForm, emp);
 			eService.update(emp);
-			return "redirect:/user/allList";
+			return "redirect:/user/search";
 		}	
-	}
-	
-	//削除処理
-	@PostMapping(value="user/{employee_id}/edit", params="delete")
-	public String deleteEmployeeData(@PathVariable("employee_id") Integer employee_id, Model model) {
-		eService.delete(employee_id);
-		return "redirect:/user/allList";
 	}
 		
 }

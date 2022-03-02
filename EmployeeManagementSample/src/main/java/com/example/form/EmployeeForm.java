@@ -43,4 +43,7 @@ public class EmployeeForm {
 	@DateTimeFormat(pattern="yyyy/MM/dd")
 	@NotNull(message="{date_of_entry_check}")
 	private Date date_of_entry;
+	
+	private Date StartDate;
+	private Date endDate;
 }

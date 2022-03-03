@@ -11,3 +11,10 @@ CREATE TABLE IF NOT EXISTS employees(
 	start_date DATE,
 	end_date DATE
 );
+
+DROP TABLE IF EXISTS departments;
+
+CREATE TABLE IF NOT EXISTS departments(
+	department_id int(2) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	department_name VARCHAR(100) NOT NULL
+);

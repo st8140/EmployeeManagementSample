@@ -99,3 +99,22 @@ a {
 .fw-bold {
 	font-weight: bold;
 }
+
+.sidebar {
+  height: 80vh;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+
+.fs-2 {
+	font-size: 30px;
+}
+
+ul.navbar-nav li a {
+	color: #fff;
+	font-size: 18px;
+}
+
+ul.navbar-nav li a:hover {
+	color: #ffff00;
+}

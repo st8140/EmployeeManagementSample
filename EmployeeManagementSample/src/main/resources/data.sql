@@ -14,3 +14,11 @@ end_date
 (3,'hoge', 2, '080-5678-1234','hoge@a.com', 'password', '2022-02-01', '2022-02-01', '2022-02-01'),
 (4,'hogehoge', 2, '090-5678-1234','hogehoge@a.com', 'password', '2001-03-01', '2001-03-01', '2001-03-01');
 
+INSERT INTO departments (
+	department_id,
+	department_name
+) VALUES
+	(1, '営業一課'),
+	(2, '営業二課'),
+	(3, '営業三課'),
+	(4, '営業四課');

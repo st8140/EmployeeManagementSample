@@ -55,17 +55,18 @@ public class SignupController {
 		Employee emp = new Employee();
 		
 		if (result.hasErrors()) {
-			model.addAttribute("message", "エラーが発生しました");
 			return getSignup(eForm, model, locale);
 		} else {
 			log.info(eForm.toString());
 			
 			//ユーザー登録
+			emp.setStart_date(eForm.getDate_of_entry());
+			emp.setEnd_date(eForm.getDate_of_entry());
 			BeanUtils.copyProperties(eForm, emp);
 			eService.insert(emp);	
 			
 			//ユーザー一覧画面へ遷移
-			return "redirect:/user/allList";
+			return "redirect:/user/search";
 		}
 	}
 }

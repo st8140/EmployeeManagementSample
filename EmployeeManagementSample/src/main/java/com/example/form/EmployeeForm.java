@@ -20,6 +20,7 @@ public class EmployeeForm {
 	private Integer employee_id;
 	
 	@NotBlank
+	@Length(min=1, max=20, groups=ValidGroup1.class)
 	private String employee_name;
 	
 	@NotNull(message="{gender_check}")
@@ -43,4 +44,7 @@ public class EmployeeForm {
 	@DateTimeFormat(pattern="yyyy/MM/dd")
 	@NotNull(message="{date_of_entry_check}")
 	private Date date_of_entry;
+	
+	private Date StartDate;
+	private Date endDate;
 }

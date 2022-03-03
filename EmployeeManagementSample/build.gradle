@@ -33,6 +33,10 @@ dependencies {
 	implementation 'org.webjars:bootstrap:4.5.3'
 	//webjars-locator
 	implementation 'org.webjars:webjars-locator:0.40'
+	//font-awesome
+	implementation 'org.webjars:font-awesome:5.13.0'
+	//thymeleaf-layout-dialect
+	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
 	
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'

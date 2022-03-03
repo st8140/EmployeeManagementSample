@@ -29,4 +29,10 @@ public class Employee {
 	
 	@DateTimeFormat(pattern="yyyy/MM/dd")
 	private Date date_of_entry;
+	
+	@DateTimeFormat(pattern="yyyy/MM/dd")
+	private Date start_date;
+	
+	@DateTimeFormat(pattern="yyyy/MM/dd")
+	private Date end_date;
 }

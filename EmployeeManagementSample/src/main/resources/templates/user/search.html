@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	 layout:decorate="~{layout/layout}">
+<head>
+	<title>社員一覧 / 検索</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<h1 class="heading mb-3">社員一覧 / 検索</h1>
+		<div class="container mb-5">
+			<div class="border border-3"></div>
+			<h5 class="mt-4 p-2 fw-bold">社員検索</h5>
+			<div class="border mb-3">
+				<form method="get" th:object="${sForm}" th:action="@{/user/search/result}">
+					<div class="border-bottom bg-light p-2"><i class="fas fa-search"></i>検索条件</div>
+					<div id="search-body">				
+						<!-- 性別 -->
+					  	<div class="row pt-2 form-group">
+			              <div th:text="#{gender}"></div>
+			              <div class="gender-radio form-check-inline">
+			              	<div  th:each="item : ${genderMap}" class="radio-margin">
+				                <input class="form-check-input ms-2 gender-radio" type="radio" th:value="${item.value}" th:field="*{gender}"/>
+				                <label class="form-check-label" th:text="${item.key}"></label>
+			              	</div>
+			              </div>
+			            </div>						
+						<!-- email -->
+						<div class="row form-group">
+			              <div class="mb-3 row">
+						    <label class="col-sm-5 col-form-label" th:text="#{employee_email}"></label>
+						    <div class="col-sm-7">
+						      <input type="text" class="form-control search-input" th:field="*{employee_email}">
+						    </div>
+						  </div>
+			            </div>	            
+			            <!-- 入社年月日 -->
+			            <div class="row pb-2 form-group">
+			              <div class="mb-3 row">
+						    <label class="col-sm-3 col-form-label" th:text="#{date_of_entry}"></label>
+						    <div class="col-sm-3 date-input">
+						      <input type="text" class="form-control search-input"  th:field="*{start_date}" 
+						      		 th:errorclass="is-invalid" placeholder="yyyy/MM/dd">
+							    <div class="invalid-feedback" th:errors="*{start_date}"></div>
+						    </div>
+						    <span class="s-size date-input">~</span>
+						    <div class="col-sm-3 date-input">
+						      <input type="text" class="form-control search-input" th:field="*{end_date}" 
+						      		th:errorclass="is-invalid" placeholder="yyyy/MM/dd">
+						      <div class="invalid-feedback" th:errors="*{start_date}"></div>
+						    </div>
+						  </div>
+			            </div>
+					</div>
+		            <div class="search-btn">
+		            	<input class="search-submit btn btn-primary" type="submit" value="検索"/>
+			            <input id="search-clear" class="btn btn-secondary" type="button" value="クリア"/>
+		            </div>
+				</form>
+			</div>
+			
+				<h5 class="mt-4 p-2 fw-bold">検索結果</h5>
+				<table class="table table-striped table-bordered table-hover">
+					<thead class="thead-light">
+						<tr>
+							<th class="th-width">社員番号</th>
+							<th class="th-width">氏名</th>
+							<th class="th-width">性別</th>
+							<th class="th-width">電話番号</th>
+							<th class="th-width">メールアドレス</th>
+							<th class="th-width">入社年月日</th>
+							<th class="th-width">&nbsp;</th>
+							<th class="th-width">&nbsp;</th>
+						</tr>
+					</thead>
+					<tbody>
+						<th:block th:if="${employees == null}">
+							<tr th:each="item: ${eAllList}">
+								<td th:text="${item.employee_id}"></td>
+								<td th:text="${item.employee_name}"></td>
+								<td th:text="${item.gender == 1}? '男性': '女性'"></td>
+								<td th:text="${item.employee_phone}"></td>
+								<td th:text="${item.employee_email}"></td>
+								<td th:text="${#dates.format(item.date_of_entry, 'yyyy/MM/dd')}"></td>
+								<td class="text-center"><a th:href="@{/user/ __${item.employee_id}__/edit}" class="btn btn-primary">編集</a></td>
+								<td class="text-center">
+									<form method="post" th:action="@{/user/search/{id}/delete(id=${item.employee_id})}">
+										<input type="submit" value="削除" name="delete"
+			          						class="btn btn-danger delete-btn"/>
+			          					<input type="hidden" name="employee_id" th:value="${item.employee_id}"/>
+									</form>
+		          				</td>
+							</tr>
+						</th:block>
+						<th:block th:if="${employees != null}">
+								<tr th:each="item: ${employees}">
+									<td th:text="${item.employee_id}"></td>
+									<td th:text="${item.employee_name}"></td>
+									<td th:text="${item.gender == 1}? '男性': '女性'"></td>
+									<td th:text="${item.employee_phone}"></td>
+									<td th:text="${item.employee_email}"></td>
+									<td th:text="${#dates.format(item.date_of_entry, 'yyyy/MM/dd')}"></td>
+									<td class="text-center"><a th:href="@{/user/ __${item.employee_id}__/edit}" class="btn btn-primary">編集</a></td>
+									<td class="text-center">
+										<form method="post" th:action="@{/user/search/{id}/delete(id=${item.employee_id})}">
+											<input type="submit" value="削除" name="delete"
+				          						class="btn btn-danger delete-btn"/>
+				          					<input type="hidden" name="employee_id" th:value="${item.employee_id}"/>
+										</form>
+			          				</td>
+								</tr>
+						</th:block>
+					</tbody>
+				</table>
+				<div class="pt-2">
+				    <a type="button" th:href="@{/signup}"><i class="fas fa-undo"></i>戻る</a>
+			    </div>
+		</div>
+	</div>
+</body>
+</html>

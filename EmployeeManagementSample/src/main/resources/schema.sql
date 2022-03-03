@@ -7,5 +7,7 @@ CREATE TABLE IF NOT EXISTS employees(
 	employee_phone VARCHAR(13) NOT NULL,
 	employee_email VARCHAR(100) NOT NULL,
 	password VARCHAR(8) NOT NULL,
-	date_of_entry DATE NOT NULL
+	date_of_entry DATE NOT NULL,
+	start_date DATE,
+	end_date DATE
 );

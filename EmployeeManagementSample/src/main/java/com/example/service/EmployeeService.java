@@ -54,7 +54,7 @@ public class EmployeeService{
 		EmployeeSpecification<Employee> spec = new EmployeeSpecification<>();
 		return eRepository.findAll(Specification
 					.where(spec.genderEqual(sForm.getGender()))
-					.and(spec.employeeEmaiContains(sForm.getEmployee_name()))
+					.and(spec.employeeEmaiContains(sForm.getEmployee_email()))
 					.and(spec.startDateGreaterThanEqual(sForm.getStart_date()))
 					.and(spec.endDateLessThanEqual(sForm.getEnd_date()))
 					);

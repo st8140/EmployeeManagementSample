@@ -55,7 +55,6 @@ public class SignupController {
 		Employee emp = new Employee();
 		
 		if (result.hasErrors()) {
-			model.addAttribute("message", "エラーが発生しました");
 			return getSignup(eForm, model, locale);
 		} else {
 			log.info(eForm.toString());

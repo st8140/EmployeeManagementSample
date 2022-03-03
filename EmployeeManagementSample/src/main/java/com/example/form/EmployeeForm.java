@@ -20,6 +20,7 @@ public class EmployeeForm {
 	private Integer employee_id;
 	
 	@NotBlank
+	@Length(min=1, max=20, groups=ValidGroup1.class)
 	private String employee_name;
 	
 	@NotNull(message="{gender_check}")

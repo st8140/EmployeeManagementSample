@@ -19,7 +19,7 @@ public class departmentController {
 	
 	@GetMapping("/allList")
 	public String toDepartmentAllList(@ModelAttribute Department dep, Model model) {
-		model.addAttribute("dAllList", dService.dAllList());
+		model.addAttribute("empList", dService.empList());
 		return "department/allList";
 	}
 

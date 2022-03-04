@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -35,4 +37,14 @@ public class Employee {
 	
 	@DateTimeFormat(pattern="yyyy/MM/dd")
 	private Date end_date;
+	
+	private Integer sales;
+	private String district_in_charge;
+	private Integer customers;
+	private Date updated_at;
+	private Integer department_id;
+	
+	@OneToOne
+	@JoinColumn(name="department_id", insertable=false, updatable=false)
+	private Department dept;
 }

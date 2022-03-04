@@ -9,7 +9,12 @@ CREATE TABLE IF NOT EXISTS employees(
 	password VARCHAR(8) NOT NULL,
 	date_of_entry DATE NOT NULL,
 	start_date DATE,
-	end_date DATE
+	end_date DATE,
+	sales int(10),
+	district_in_charge VARCHAR(100),
+	customers int(100),
+	updated_at DATE,
+	department_id int(3)
 );
 
 DROP TABLE IF EXISTS departments;

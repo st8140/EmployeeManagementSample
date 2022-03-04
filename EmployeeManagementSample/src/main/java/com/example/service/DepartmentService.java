@@ -19,4 +19,9 @@ public class DepartmentService {
 		return dRepository.findAll();
 	}
 	
+	//部門一覧表示用検索
+	public List<Object[]> empList() {
+		return dRepository.findJoinData();
+	}
+	
 }

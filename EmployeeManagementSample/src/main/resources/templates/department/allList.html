@@ -22,12 +22,10 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="item: ${dAllList}">
+					<tr th:each="item: ${AllList}">
 						<td align="center" th:text="${item.department_id}"></td>
 						<td align="center" th:text="${item.department_name}"></td>
-						<td align="right" th:text="${100000}"></td>
-						<td align="right" th:text="${100}"></td>
-						<td align="right" th:text="${10000}"></td>
+						
 						<td align="right" class="text-center"><a href="#" class="btn btn-primary">編集</a></td>
 					</tr>
 				</tbody>

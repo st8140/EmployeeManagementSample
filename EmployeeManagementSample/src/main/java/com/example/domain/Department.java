@@ -1,13 +1,12 @@
 package com.example.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -24,6 +23,7 @@ public class Department {
 	
 	private String department_name;
 	
-	@OneToMany(mappedBy="dept", fetch=FetchType.EAGER)
-	private List<Employee> emp = new ArrayList<>();
+	@OneToMany
+	@JoinColumn(name="department_id",  insertable=false, updatable=false)
+	private List<Members> member;
 }

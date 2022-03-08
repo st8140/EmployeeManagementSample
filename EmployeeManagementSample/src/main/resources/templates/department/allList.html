@@ -22,9 +22,12 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="item: ${AllList}">
+					<tr th:each="item: ${findJoinList}">							
 						<td align="center" th:text="${item.department_id}"></td>
 						<td align="center" th:text="${item.department_name}"></td>
+						<td align="center" th:text="${item.sum_sales}"></td>
+						<td align="center" th:text="${item.count_employee}"></td>
+						<td align="center" th:text="${item.avg_sales}"></td>
 						
 						<td align="right" class="text-center"><a href="#" class="btn btn-primary">編集</a></td>
 					</tr>

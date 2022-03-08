@@ -38,13 +38,7 @@ public class Employee {
 	@DateTimeFormat(pattern="yyyy/MM/dd")
 	private Date end_date;
 	
-	private Integer sales;
-	private String district_in_charge;
-	private Integer customers;
-	private Date updated_at;
-	private Integer department_id;
-	
 	@OneToOne
-	@JoinColumn(name="department_id", insertable=false, updatable=false)
-	private Department dept;
+	@JoinColumn(name="employee_id",  insertable=false, updatable=false)
+	private Members member;
 }

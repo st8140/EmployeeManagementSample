@@ -9,12 +9,7 @@ CREATE TABLE IF NOT EXISTS employees(
 	password VARCHAR(8) NOT NULL,
 	date_of_entry DATE NOT NULL,
 	start_date DATE,
-	end_date DATE,
-	sales int(10),
-	district_in_charge VARCHAR(100),
-	customers int(100),
-	updated_at DATE,
-	department_id int(3)
+	end_date DATE
 );
 
 DROP TABLE IF EXISTS departments;
@@ -22,4 +17,16 @@ DROP TABLE IF EXISTS departments;
 CREATE TABLE IF NOT EXISTS departments(
 	department_id int(2) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	department_name VARCHAR(100) NOT NULL
+);
+
+DROP TABLE IF EXISTS members;
+
+CREATE TABLE IF NOT EXISTS members(
+	id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	employee_id INT(3) NOT NULL,
+	department_id int(2) NOT NULL,
+	sales int(10),
+	district_in_charge VARCHAR(100),
+	customers int(100),
+	updated_at DATE
 );

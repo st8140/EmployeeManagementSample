@@ -22,12 +22,4 @@ public class DepartmentSummary {
 	    this((Integer) objects[0], (String) objects[1], (BigDecimal) objects[2], 
 	    		(BigInteger) objects[3], (BigDecimal) objects[4]);
 	  }
-
-
-	
-
-	
-
-	
-
 }

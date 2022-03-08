@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 @Entity
@@ -26,5 +28,7 @@ public class Members {
 	private Integer sales;
 	private String district_in_charge;
 	private Integer customers;
+	
+	@DateTimeFormat(pattern="yyyy/MM/dd")
 	private Date updated_at;
 }

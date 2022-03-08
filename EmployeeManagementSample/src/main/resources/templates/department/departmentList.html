@@ -22,14 +22,14 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="item: ${findJoinList}">							
+					<tr th:each="item: ${departmentJoinMembersList}">							
 						<td align="center" th:text="${item.department_id}"></td>
 						<td align="center" th:text="${item.department_name}"></td>
 						<td align="center" th:text="${#numbers.formatInteger(item.sum_sales, 3, 'COMMA')}"></td>
 						<td align="center" th:text="${item.count_employee}"></td>
 						<td align="center" th:text="${#numbers.formatDecimal(item.avg_sales, 3, 'COMMA', 0, 'POINT')}"></td>
 						
-						<td align="right" class="text-center"><a href="#" class="btn btn-primary">編集</a></td>
+						<td align="right" class="text-center"><a th:href="@{/department/ __${item.department_id}__/employeeList}" class="btn btn-primary">編集</a></td>
 					</tr>
 				</tbody>
 			</table>

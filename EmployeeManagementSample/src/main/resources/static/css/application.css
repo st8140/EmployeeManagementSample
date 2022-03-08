@@ -118,3 +118,7 @@ ul.navbar-nav li a {
 ul.navbar-nav li a:hover {
 	color: #ffff00;
 }
+
+.search-form .form-check {
+	margin-left: 10px;
+}

@@ -11,7 +11,11 @@ import com.example.summary.DepartmentSummary;
 
 @Repository
 public interface DepartmentRepository extends JpaRepository<Department, Integer> {
-
+	
+	/**
+	 * 
+	 * 部門別一覧表示用クエリ
+	 */
 	@Query(value=
 			"SELECT d.department_id, department_name,"
 			+ " SUM(sales) AS 'sum_sales', COUNT(employee_id) AS 'count_employee', AVG(sales) AS 'avg_sales'"
@@ -22,10 +26,12 @@ public interface DepartmentRepository extends JpaRepository<Department, Integer>
 			+ " ORDER BY d.department_id asc", nativeQuery = true)
 	public List<Object[]> getJoinDatas();
 	
-	default List<DepartmentSummary> findJoinData() {
+	//Object型で取得後streamでDepartmentSummaryに流し込んでNEWしてる
+	default List<DepartmentSummary> departmentJoinMembersData() {
 		return getJoinDatas()
 				.stream()
 				.map(DepartmentSummary::new)
 				.collect(Collectors.toList());
 	}
+	
 }

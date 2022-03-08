@@ -13,6 +13,7 @@ import com.example.domain.Employee;
 import com.example.domain.EmployeeRepository;
 import com.example.form.SearchForm;
 import com.example.specification.EmployeeSpecification;
+import com.example.summary.EmployeeSummary;
 
 
 @Service
@@ -49,7 +50,9 @@ public class EmployeeService{
 		return eRepository.findById(employee_id).orElseThrow();
 	}
 	
-	/** ユーザー検索 */
+	/**
+	 * ユーザー検索
+	 */
 	public List<Employee> getSearchEmployee(SearchForm sForm) {
 		EmployeeSpecification<Employee> spec = new EmployeeSpecification<>();
 		return eRepository.findAll(Specification
@@ -58,5 +61,12 @@ public class EmployeeService{
 					.and(spec.startDateGreaterThanEqual(sForm.getStart_date()))
 					.and(spec.endDateLessThanEqual(sForm.getEnd_date()))
 					);
+	}
+	
+	/**
+	 * 社員別一覧検索
+	 */
+	public List<EmployeeSummary> employeeJoinMembersList(Integer department_id) {
+		return eRepository.employeeJoinMembersData(department_id);
 	}
 }

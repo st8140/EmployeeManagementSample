@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+<head>
+<title>部門別 / 社員編集</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div class="container page shadow bg-body rounded">
+	    <h1 class="heading mb-3">部門別 / 社員編集</h1>
+	    <div class="border border-3"></div>
+	      <div class="regist-content">
+	        <form method="post"  th:object="${employeeForm}">
+	        	<div th:text="${message}"></div>
+	          <div class="regist-table">
+	          
+	            <!-- IDをhiddenで送信 -->
+	            <input type="hidden" th:field="*{employee_id}" />
+	                      
+	            <!-- 氏名 -->
+	            <div class="row pt-2 pb-2 form-group">
+	              <div class="col-4"  th:text="#{employee_name}"></div>
+	              <div class="col-6">
+	              	<input type="text"class="form-control" th:field="*{employee_name}"  th:errorclass="is-invalid"/>
+	              	<div class="invalid-feedback" th:errors="*{employee_name}"></div>
+	              </div>
+	            </div>
+	            
+	            <!-- 性別 -->
+	            <div class="row pt-2 pb-2 form-group">
+	              <div class="col-4"  th:text="#{gender}"></div>
+	              <div class="col-6 form-check-inline ms-3">
+	              	<div th:text="*{gender == 1}? '男性': '女性'"></div>
+	              	<input type="hidden" th:field="*{gender}"/>
+	              </div>
+	            </div>
+	            
+	            <!-- 電話番号 -->
+	            <div class="row pt-2 pb-2 form-group">
+	              <div class="col-4"  th:text="#{employee_phone}"></div>
+	              <div class="col-6">
+	              	<input type="text"class="form-control" th:field="*{employee_phone}" th:errorclass="is-invalid"/>
+	              	<div class="invalid-feedback" th:errors="*{employee_phone}"></div>
+	              </div>
+	            </div>
+	            
+	            <!-- メールアドレス -->
+	            <div class="row pt-2 pb-2 form-group">
+	              <div class="col-4" th:text="#{employee_email}"></div>
+	              <div class="col-6">
+	              	<input type="text" class="form-control" th:field="*{employee_email}" th:errorclass="is-invalid"/>
+		            <div class="invalid-feedback" th:errors="*{employee_email}"></div>
+	              </div>
+	            </div>
+	            
+	            <!-- パスワード -->
+	            <div class="row pt-2 pb-2 form-group">
+	              <div class="col-4" th:text="#{password}"></div>
+	              <div class="col-6">
+	              	<input type="text" class="form-control" th:field="*{password}" th:errorclass="is-invalid"/>
+		            <div class="invalid-feedback" th:errors="*{password}"></div>
+	               </div>
+	            </div>
+	            
+	            <!-- 入社年月日 -->
+	            <div class="row pt-2 pb-2 form-group">
+	              <div class="col-4" th:text="#{date_of_entry}"></div>
+	              <div class="col-6">
+	              	<input type="text"class="form-control" th:field="*{date_of_entry}"
+	              		 th:errorclass="is-invalid" placeholder="yyyy/MM/dd"/>
+		            <div class="invalid-feedback" th:errors="*{date_of_entry}"></div>
+	              </div>
+	            </div>
+	            <div class="regist-btn mt-5">
+	          	  <input type="submit" value="更新"  th:href="@{/user/{id}/edit(id=*{employee_id})}"
+	          		   class="btn btn-primary" name="update"/>
+	            </div>
+	          </div>
+	        </form>
+	      </div>
+	    </div>
+	</div>
+
+</body>
+</html>

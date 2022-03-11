@@ -22,11 +22,12 @@ CREATE TABLE IF NOT EXISTS departments(
 DROP TABLE IF EXISTS members;
 
 CREATE TABLE IF NOT EXISTS members(
-	id int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	employee_id INT(3) NOT NULL,
+	id int(5) NOT NULL AUTO_INCREMENT,
+	employee_id INT(3) NOT NULL ,
 	department_id int(2) NOT NULL,
 	sales int(10),
 	district_in_charge VARCHAR(100),
 	customers int(100),
-	updated_at DATE
+	updated_at DATE,
+	PRIMARY KEY(id, employee_id)
 );

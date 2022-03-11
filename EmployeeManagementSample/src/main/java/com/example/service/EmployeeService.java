@@ -13,8 +13,6 @@ import com.example.domain.Employee;
 import com.example.domain.EmployeeRepository;
 import com.example.form.SearchForm;
 import com.example.specification.EmployeeSpecification;
-import com.example.summary.EmployeeSummary;
-
 
 @Service
 public class EmployeeService{
@@ -22,29 +20,31 @@ public class EmployeeService{
 	@Autowired
 	private EmployeeRepository eRepository;
 	
-	/** ユーザー登録 */	
+	/** 社員登録 */	
 	@Transactional
 	public void insert(Employee employee) {
 		eRepository.save(employee);
 	}
 	
-	/** ユーザー更新 */	
+	/** 社員情報更新 */	
 	@Transactional
 	public void update(Employee employee) {
 		eRepository.save(employee);
 	}
 	
-	/** ユーザー削除 */
+	/** 社員情報削除 */
 	public void delete(Integer employee_id) {
 		eRepository.deleteById(employee_id);
 	}
 	
-	/** ユーザー全件検索 */
+	/** 社員全件検索 */
 	public List<Employee> allList() {
 		return eRepository.findAll();
 	}
 	
-	/** ユーザーID検索 */
+	/** 
+	 * 社員ID検索 
+	 */
 	@GetMapping("{employee_id}")
 	public Employee findOne(@PathVariable("employee_id") Integer employee_id) {
 		return eRepository.findById(employee_id).orElseThrow();
@@ -61,12 +61,5 @@ public class EmployeeService{
 					.and(spec.startDateGreaterThanEqual(sForm.getStart_date()))
 					.and(spec.endDateLessThanEqual(sForm.getEnd_date()))
 					);
-	}
-	
-	/**
-	 * 社員別一覧検索
-	 */
-	public List<EmployeeSummary> employeeJoinMembersList(Integer department_id) {
-		return eRepository.employeeJoinMembersData(department_id);
 	}
 }

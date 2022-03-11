@@ -12,7 +12,7 @@
 			<div class="border border-3"></div>
 			<h5 class="mt-4 p-2 fw-bold">社員検索</h5>
 			<div class="border mb-3">
-				<form method="get" th:object="${sForm}" th:action="@{/user/search/result}">
+				<form method="get" th:object="${sForm}" th:action="@{/employee/search/result}">
 					<div class="border-bottom bg-light p-2"><i class="fas fa-search"></i>検索条件</div>
 					<div id="search-body">				
 						<!-- 性別 -->
@@ -82,9 +82,9 @@
 							<td th:text="${item.employee_phone}"></td>
 							<td th:text="${item.employee_email}"></td>
 							<td th:text="${#dates.format(item.date_of_entry, 'yyyy/MM/dd')}"></td>
-							<td class="text-center"><a th:href="@{/user/ __${item.employee_id}__/edit}" class="btn btn-primary">編集</a></td>
+							<td class="text-center"><a th:href="@{/employee/ __${item.employee_id}__/edit}" class="btn btn-primary">編集</a></td>
 							<td class="text-center">
-								<form method="post" th:action="@{/user/search/{id}/delete(id=${item.employee_id})}">
+								<form method="post" th:action="@{/employee/search/{id}/delete(id=${item.employee_id})}">
 									<input type="submit" value="削除" name="delete"
 		          						class="btn btn-danger delete-btn"/>
 		          					<input type="hidden" name="employee_id" th:value="${item.employee_id}"/>
@@ -100,9 +100,10 @@
 							<td th:text="${item.employee_phone}"></td>
 							<td th:text="${item.employee_email}"></td>
 							<td th:text="${#dates.format(item.date_of_entry, 'yyyy/MM/dd')}"></td>
-							<td class="text-center"><a th:href="@{/user/ __${item.employee_id}__/edit}" class="btn btn-primary">編集</a></td>
+							<td class="text-center"><a th:href="@{/employee/ __${item.employee_id}__/edit}"
+								 class="btn btn-primary">編集</a></td>
 							<td class="text-center">
-								<form method="post" th:action="@{/user/search/{id}/delete(id=${item.employee_id})}">
+								<form method="post" th:action="@{/employee/search/{id}/delete(id=${item.employee_id})}">
 									<input type="submit" value="削除" name="delete"
 		          						class="btn btn-danger delete-btn"/>
 		          					<input type="hidden" name="employee_id" th:value="${item.employee_id}"/>

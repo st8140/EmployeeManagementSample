@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -38,7 +37,7 @@ public class Employee {
 	@DateTimeFormat(pattern="yyyy/MM/dd")
 	private Date end_date;
 	
-	@OneToOne
-	@JoinColumn(name="employee_id",  insertable=false, updatable=false)
+	@OneToOne(mappedBy="employee")
+//	@JoinColumn(name="employee_id",  insertable=false, updatable=false)
 	private Members member;
 }

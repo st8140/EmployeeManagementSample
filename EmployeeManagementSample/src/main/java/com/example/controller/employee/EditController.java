@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.example.controller.employee;
 
 import javax.validation.GroupSequence;
 import javax.validation.groups.Default;
@@ -29,17 +29,17 @@ public class EditController {
 	interface GroupOrder {}
 	
 	//編集画面へ遷移
-	@GetMapping("user/{employee_id}/edit")
+	@GetMapping("employee/{employee_id}/edit")
 	public String toEdit(
 			@PathVariable("employee_id") Integer employee_id,
 			@ModelAttribute EmployeeForm eForm, Model model) {
 		Employee emp = eService.findOne(employee_id);
 		model.addAttribute("employeeForm", emp);
-		return "/user/edit";
+		return "/employee/edit";
 	}
 	
 	//更新処理
-	@PostMapping(value="user/{employee_id}/edit", params="update")
+	@PostMapping(value="employee/{employee_id}/edit", params="update")
 	public String editEmployeeData(
 			@PathVariable Integer employee_id,
 			@ModelAttribute @Validated(GroupOrder.class) EmployeeForm eForm,
@@ -48,12 +48,11 @@ public class EditController {
 		
 		if(result.hasErrors()) {
 			System.out.println(result);
-			return "/user/edit";
+			return "employee/edit";
 		} else {
 			BeanUtils.copyProperties(eForm, emp);
 			eService.update(emp);
-			return "redirect:/user/search";
+			return "redirect:/employee/search";
 		}	
-	}
-		
+	}	
 }

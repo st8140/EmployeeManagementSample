@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.example.controller.employee;
 
 import java.util.List;
 import java.util.Locale;
@@ -20,7 +20,7 @@ import com.example.domain.Employee;
 import com.example.form.SearchForm;
 import com.example.service.EmployeeService;
 
-@RequestMapping("/user")
+@RequestMapping("/employee")
 @Controller
 public class ListController {
 	
@@ -38,7 +38,7 @@ public class ListController {
 		this.createGenderMap(model, locale);
 		model.addAttribute("eAllList", eAllList);
 		model.addAttribute("sForm", sForm);
-		return "user/search";
+		return "employee/search";
 	}
 	
 	//検索処理
@@ -47,11 +47,11 @@ public class ListController {
 				BindingResult result, Model model, Locale locale) {
 		if (result.hasErrors()) {
 			this.createGenderMap(model, locale);
-			return "user/search";
+			return "employee/search";
 		} else {
 			this.createGenderMap(model, locale);
 			model.addAttribute("employees", eService.getSearchEmployee(sForm));
-			return "user/search";	
+			return "employee/search";	
 		}
 	}
 	
@@ -59,7 +59,7 @@ public class ListController {
 		@PostMapping(value="/search/{employee_id}/delete", params="delete")
 		public String deleteEmployeeData(@PathVariable("employee_id") Integer employee_id, Model model) {
 			eService.delete(employee_id);
-			return "redirect:/user/search";
+			return "redirect:/employee/search";
 		}
 	
 	private Map<String, Integer> createGenderMap(Model model, Locale locale) {

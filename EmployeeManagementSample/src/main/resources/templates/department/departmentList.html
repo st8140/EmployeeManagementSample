@@ -13,11 +13,11 @@
 			<table class="table table-striped table-bordered table-hover mt-4">
 				<thead class="thead-light"  align="center">
 					<tr>
-						<th class="th-width">課番号</th>
-						<th class="th-width">課名</th>
-						<th class="th-width">合計売上</th>
-						<th class="th-width">所属人数</th>
-						<th class="th-width">1人あたりの売上平均値(小数点切捨)</th>
+						<th class="th-width" th:text="#{department_id}"></th>
+						<th class="th-width" th:text="#{department_name}"></th>
+						<th class="th-width" th:text="#{sum_sales}"></th>
+						<th class="th-width" th:text="#{count_employee}"></th>
+						<th class="th-width" th:text="#{avg_sales}"></th>
 						<th class="th-width">&nbsp;</th>
 					</tr>
 				</thead>
@@ -25,11 +25,18 @@
 					<tr th:each="item: ${departmentJoinMembersList}">							
 						<td align="center" th:text="${item.department_id}"></td>
 						<td align="center" th:text="${item.department_name}"></td>
-						<td align="center" th:text="${#numbers.formatInteger(item.sum_sales, 3, 'COMMA')}"></td>
-						<td align="center" th:text="${item.count_employee}"></td>
-						<td align="center" th:text="${#numbers.formatDecimal(item.avg_sales, 3, 'COMMA', 0, 'POINT')}"></td>
+						<th:block th:if="${item.count_employee == 0}">
+							<td align="center" th:text=" '-' "></td>
+							<td align="center" th:text=" '0' "></td>
+							<td align="center" th:text=" '-' "></td>
+						</th:block>
+						<th:block th:unless="${item.count_employee == 0}">
+							<td align="center" th:text=" '&yen;' + ${#numbers.formatInteger(item.sum_sales, 3, 'COMMA')}"></td>
+							<td align="center" th:text="${item.count_employee}"></td>
+							<td align="center" th:text=" '&yen;' + ${#numbers.formatDecimal(item.avg_sales, 3, 'COMMA', 0, 'POINT')}"></td>
+						</th:block>
 						
-						<td align="right" class="text-center"><a th:href="@{/department/ __${item.department_id}__/employeeList}" class="btn btn-primary">編集</a></td>
+						<td align="right" class="text-center"><a th:href="@{/members/ __${item.department_id}__/membersList}" class="btn btn-primary">編集</a></td>
 					</tr>
 				</tbody>
 			</table>

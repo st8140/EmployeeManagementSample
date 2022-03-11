@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.example.controller.employee;
 
 import java.util.Locale;
 import java.util.Map;
@@ -66,7 +66,7 @@ public class SignupController {
 			eService.insert(emp);	
 			
 			//ユーザー一覧画面へ遷移
-			return "redirect:/user/search";
+			return "redirect:/employee/search";
 		}
 	}
 }

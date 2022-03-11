@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmployeeSummary {
+public class MembersSummary {
 	
 	private Integer employee_id;
 	private String employee_name;
@@ -22,7 +22,7 @@ public class EmployeeSummary {
 	@DateTimeFormat(pattern="yyyy/MM/dd")
 	private Date updated_at;
 	
-	public EmployeeSummary(Object[] objects) {
+	public MembersSummary(Object[] objects) {
 		this((Integer) objects[0], (String) objects[1], (String) objects[2], (Integer) objects[3],
 				(Integer) objects[4], (Date) objects[5]);
 	}

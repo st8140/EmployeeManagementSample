@@ -25,17 +25,37 @@
 					<tr th:each="item: ${departmentJoinMembersList}">							
 						<td align="center" th:text="${item.department_id}"></td>
 						<td align="center" th:text="${item.department_name}"></td>
+						
+						<!-- 所属人数0人の時の表示 -->
 						<th:block th:if="${item.count_employee == 0}">
 							<td align="center" th:text=" '-' "></td>
 							<td align="center" th:text=" '0' "></td>
 							<td align="center" th:text=" '-' "></td>
 						</th:block>
+									
+						<!-- 所属人数1人以上の時の表示 -->		
 						<th:block th:unless="${item.count_employee == 0}">
-							<td align="center" th:text=" '&yen;' + ${#numbers.formatInteger(item.sum_sales, 3, 'COMMA')}"></td>
-							<td align="center" th:text="${item.count_employee}"></td>
-							<td align="center" th:text=" '&yen;' + ${#numbers.formatDecimal(item.avg_sales, 3, 'COMMA', 0, 'POINT')}"></td>
-						</th:block>
 						
+							<!-- 合計売上　100以上の場合はコンマ表示 -->
+							<th:block th:if="${item.sum_sales > 100}">
+								<td align="center" th:text=" '&yen;' + ${#numbers.formatInteger(item.sum_sales, 3, 'COMMA')}"></td>
+							</th:block>
+							<th:block th:unless="${item.sum_sales > 100}">
+								<td align="center" th:text=" '&yen;' + ${item.sum_sales}"></td>
+							</th:block>
+							
+							<!-- 所属人数 -->
+							<td align="center" th:text="${item.count_employee}"></td>
+							
+							<!-- 売上平均　100以上の場合はコンマ表示 -->
+							<th:block th:if="${item.avg_sales > 100}">
+								<td align="center" th:text=" '&yen;' + ${#numbers.formatDecimal(item.avg_sales, 3, 'COMMA', 0, 'POINT')}"></td>
+							</th:block>
+							<th:block th:unless="${item.avg_sales > 100}">
+								<td align="center" th:text=" '&yen;' + ${#numbers.formatDecimal(item.avg_sales, 0, 'COMMA', 0, 'POINT')}"></td>
+							</th:block>
+															
+						</th:block>
 						<td align="right" class="text-center"><a th:href="@{/members/ __${item.department_id}__/membersList}" class="btn btn-primary">編集</a></td>
 					</tr>
 				</tbody>

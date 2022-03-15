@@ -122,3 +122,13 @@ ul.navbar-nav li a:hover {
 .search-form .form-check {
 	margin-left: 10px;
 }
+
+.retirement-color {
+	background: #696969 !important;
+}
+
+.retirement-btn-color {
+	background: #696969;
+	color: gray;
+	border-color: initial !important;
+}

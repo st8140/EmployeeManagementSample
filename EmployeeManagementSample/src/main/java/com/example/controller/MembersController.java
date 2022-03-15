@@ -32,14 +32,35 @@ public class MembersController {
 
 	/**
 	 * 部門別/社員一覧画面へ遷移
-	 * @param department_id
-	 * @param model
-	 * @return
+	 *
 	 */
 	@GetMapping("/members/{department_id}/membersList")
 	public String toMembersList(@PathVariable("department_id") Integer department_id, Model model) {
-		model.addAttribute("employeeJoinMembersList", mService.employeeJoinMembersList(department_id))	;
-
+		model.addAttribute("employeeJoinMembersList", mService.employeeJoinMembersList(department_id));
+		//表示用の課名を取得
+		model.addAttribute("getName", dService.getById(department_id).getDepartment_name());
+		return "members/membersList";
+	}
+	
+	/**
+	 * 在籍社員一覧
+	 */
+	@GetMapping("/members/{department_id}/enrollmentList")
+	public String enrollmentList(@PathVariable("department_id") Integer department_id, Model model) {
+		//在籍社員一覧
+		model.addAttribute("findEnrollmentEmployeeList", mService.findEnrollmentEmployeeList(department_id));
+		//表示用の課名を取得
+		model.addAttribute("getName", dService.getById(department_id).getDepartment_name());
+		return "members/membersList";
+	}
+	
+	/**
+	 * 退職社員一覧
+	 */
+	@GetMapping("/members/{department_id}/retirementList")
+	public String retirementList(@PathVariable("department_id") Integer department_id, Model model) {
+		//退職社員一覧
+		model.addAttribute("findRetirementEmployeeList", mService.findRetirementEmployeeList(department_id));
 		//表示用の課名を取得
 		model.addAttribute("getName", dService.getById(department_id).getDepartment_name());
 		return "members/membersList";
@@ -62,20 +83,28 @@ public class MembersController {
 	/**
 	 * 更新処理
 	 */
-	@PostMapping(value="/members/{employee_id}/edit", params="update")
-	public String edit(@PathVariable("employee_id") Integer employee_id,
+	@PostMapping(value="/members/{department_id}/{employee_id}/edit", params="update")
+	public String edit(@PathVariable("employee_id") Integer employee_id, @PathVariable("department_id") Integer department_id,
 			@Validated @ModelAttribute MembersEditForm membersEditForm, BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			//表示用の氏名を取得
 			model.addAttribute("employee_name", eService.findOne(employee_id).getEmployee_name());
 			return "members/edit";
 		} else {
-			Members member = new Members();
-			BeanUtils.copyProperties(membersEditForm,member);
-			mService.update(member);
-//			Integer id = member.getDepartment_id();
-			return "redirect:/department/departmentList";
-//			return "redirect:/{id}/departmentList";
+			Members members = new Members();
+			BeanUtils.copyProperties(membersEditForm,members);
+			mService.update(members);
+			return "redirect:/members/{department_id}/membersList";
 		}
+	}
+	
+	/**
+	 * 退職処理
+	 */
+	@PostMapping(value="/members/{department_id}/{employee_id}/retirement", params="retirement")
+	public String retirement(@PathVariable("employee_id") Integer employee_id, 
+				@PathVariable("department_id") Integer department_id, Model model) {
+		mService.retirement(true, employee_id);
+		return "redirect:/members/{department_id}/membersList";		
 	}
 }

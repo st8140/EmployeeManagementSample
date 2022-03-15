@@ -15,19 +15,20 @@ CREATE TABLE IF NOT EXISTS employees(
 DROP TABLE IF EXISTS departments;
 
 CREATE TABLE IF NOT EXISTS departments(
-	department_id int(2) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	department_id INT(2) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	department_name VARCHAR(100) NOT NULL
 );
 
 DROP TABLE IF EXISTS members;
 
 CREATE TABLE IF NOT EXISTS members(
-	id int(5) NOT NULL AUTO_INCREMENT,
+	id INT(5) NOT NULL AUTO_INCREMENT,
 	employee_id INT(3) NOT NULL ,
-	department_id int(2) NOT NULL,
-	sales int(10),
+	department_id INT(2) NOT NULL,
+	sales INT(10),
 	district_in_charge VARCHAR(100),
-	customers int(100),
+	customers INT(100),
 	updated_at DATE,
+	retirement BOOLEAN,
 	PRIMARY KEY(id, employee_id)
 );

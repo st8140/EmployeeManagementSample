@@ -34,13 +34,14 @@ INSERT INTO members (
 	sales,
 	district_in_charge,
 	customers,
-	updated_at
+	updated_at,
+	retirement
 ) VALUES
-	(1, 1 , FLOOR(1 + RAND() * 4), FLOOR(1 + RAND() * 1000000), '新宿', FLOOR(1 + RAND() * 20), '2000-04-01' ),
-	(2, 2 , FLOOR(1 + RAND() * 4), FLOOR(1 + RAND() * 1000000), '池袋', FLOOR(1 + RAND() * 20), '2000-04-01' ),
-	(3, 3 , FLOOR(1 + RAND() * 4), FLOOR(1 + RAND() * 1000000), '蒲田', FLOOR(1 + RAND() * 20), '2022-02-01' ),
-	(4, 4 , FLOOR(1 + RAND() * 4), FLOOR(1 + RAND() * 1000000), '渋谷', FLOOR(1 + RAND() * 20), '2001-03-01' ),
-	(5, 5 , FLOOR(1 + RAND() * 4), FLOOR(1 + RAND() * 1000000), '原宿', FLOOR(1 + RAND() * 20), '2022-03-01' ),
-	(6, 6 , FLOOR(1 + RAND() * 4), FLOOR(1 + RAND() * 1000000), '川崎', FLOOR(1 + RAND() * 20), '2022-03-01' ),
-	(7, 7 , FLOOR(1 + RAND() * 4), FLOOR(1 + RAND() * 1000000), '練馬', FLOOR(1 + RAND() * 20), '2021-06-01' ),
-	(8, 8 ,FLOOR(1 + RAND() * 4), FLOOR(1 + RAND() * 1000000), '大久保', FLOOR(1 + RAND() * 20), '2020-02-01' );
+	(1, 1 , FLOOR(1 + RAND() * 4), FLOOR(1 + RAND() * 1000000), '新宿', FLOOR(1 + RAND() * 20), '2000-04-01', false ),
+	(2, 2 , FLOOR(1 + RAND() * 4), FLOOR(1 + RAND() * 1000000), '池袋', FLOOR(1 + RAND() * 20), '2000-04-01', false ),
+	(3, 3 , FLOOR(1 + RAND() * 4), FLOOR(1 + RAND() * 1000000), '蒲田', FLOOR(1 + RAND() * 20), '2022-02-01', false ),
+	(4, 4 , FLOOR(1 + RAND() * 4), FLOOR(1 + RAND() * 1000000), '渋谷', FLOOR(1 + RAND() * 20), '2001-03-01', false ),
+	(5, 5 , FLOOR(1 + RAND() * 4), FLOOR(1 + RAND() * 1000000), '原宿', FLOOR(1 + RAND() * 20), '2022-03-01', false ),
+	(6, 6 , FLOOR(1 + RAND() * 4), FLOOR(1 + RAND() * 1000000), '川崎', FLOOR(1 + RAND() * 20), '2022-03-01', false ),
+	(7, 7 , FLOOR(1 + RAND() * 4), FLOOR(1 + RAND() * 1000000), '練馬', FLOOR(1 + RAND() * 20), '2021-06-01', false ),
+	(8, 8 ,FLOOR(1 + RAND() * 4), FLOOR(1 + RAND() * 1000000), '大久保', FLOOR(1 + RAND() * 20), '2020-02-01', false );

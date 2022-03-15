@@ -2,6 +2,7 @@ package com.example.domain;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -37,7 +38,7 @@ public class Employee {
 	@DateTimeFormat(pattern="yyyy/MM/dd")
 	private Date end_date;
 	
-	@OneToOne(mappedBy="employee")
+	@OneToOne(mappedBy="employee", cascade = CascadeType.ALL)
 //	@JoinColumn(name="employee_id",  insertable=false, updatable=false)
 	private Members member;
 }

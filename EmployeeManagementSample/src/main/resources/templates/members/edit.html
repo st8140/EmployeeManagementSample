@@ -19,7 +19,7 @@
               </div>
             </div>
 	            
-	        <form method="post"  th:object="${membersEditForm}">
+	        <form method="post"  th:object="${membersEditForm}" th:action="@{/members/{dId}/{eId}/edit(dId=*{department_id}, eId=*{employee_id})}">
 	          <div class="regist-table"> 
 	                   
 	            <!-- IDをhiddenで送信 -->
@@ -58,7 +58,7 @@
               		th:value="${#dates.format(#dates.createNow(), 'yyyy/MM/dd')}"/>
               		 
 	            <div class="regist-btn mt-5">
-	          	  <input type="submit" value="更新"  th:href="@{/members/{eId}/edit(dId=*{department_id}, eId=*{employee_id})}"
+	          	  <input type="submit" value="更新" 
 	          		   class="btn btn-primary" name="update"/>
 	            </div>
 	          </div>

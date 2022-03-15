@@ -31,7 +31,7 @@ public class MembersService {
 	@GetMapping("employee_id")
 	public Members findOne(@PathVariable("employee_id") Integer employee_id) {
 		return mRepository.findById(employee_id);
-	}
+	} 
 	
 	/**
 	 * 更新処理
@@ -41,6 +41,28 @@ public class MembersService {
 		mRepository.save(member);			
 	}
 	
+	/**
+	 * 退職処理
+	 */
+	@Transactional
+	public void retirement(boolean retirement, Integer employee_id) {
+		mRepository.updateByRetirement(retirement, employee_id);
+	}
+	
+	/**
+	 * 在籍社員検索
+	 */
+	public List<MembersSummary> findEnrollmentEmployeeList(Integer department_id) {
+		return mRepository.findEnrollmentData(department_id);
+	}
+	
+	
+	/**
+	 * 退職社員検索
+	 */
+	public List<MembersSummary> findRetirementEmployeeList(Integer department_id) {
+		return mRepository.findRetirementData(department_id);
+	}
 	
 	
 //	@Transactional

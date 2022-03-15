@@ -39,6 +39,8 @@ public class Members {
 	@DateTimeFormat(pattern="yyyy/MM/dd")
 	private Date updated_at;
 	
+	private boolean retirement;
+	
 	@OneToOne
 	@JoinColumn(name="employee_id", insertable=false, updatable=false)
 	private Employee employee;

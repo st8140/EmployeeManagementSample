@@ -23,5 +23,5 @@ public class Department {
 	private String department_name;
 	
 	@OneToMany(mappedBy="department")
-	private List<Members> member;
+	private List<Members> members;
 }

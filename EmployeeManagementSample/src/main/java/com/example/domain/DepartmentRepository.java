@@ -17,11 +17,12 @@ public interface DepartmentRepository extends JpaRepository<Department, Integer>
 	 * 部門別一覧表示用クエリ
 	 */
 	@Query(value=
-			"SELECT d.department_id, department_name,"
-			+ " SUM(sales) AS 'sum_sales', COUNT(employee_id) AS 'count_employee', AVG(sales) AS 'avg_sales'"
+			" SELECT d.department_id, department_name,"
+			+ " SUM(sales) AS 'sum_sales', COUNT(employee_id) AS 'count_employee', AVG(sales) AS 'avg_sales', retirement "
 			+ " FROM departments d"
 			+ " LEFT JOIN members m"
 			+ " ON d.department_id = m.department_id"
+			+ " WHERE retirement = 0"
 			+ " GROUP BY d.department_id"
 			+ " ORDER BY d.department_id asc", nativeQuery = true)
 	public List<Object[]> getJoinDatas();
@@ -33,5 +34,4 @@ public interface DepartmentRepository extends JpaRepository<Department, Integer>
 				.map(DepartmentSummary::new)
 				.collect(Collectors.toList());
 	}
-	
 }

@@ -1,7 +1,5 @@
 package com.example.controller;
 
-import java.text.NumberFormat;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +10,7 @@ import com.example.service.DepartmentService;
 
 @Controller
 @RequestMapping("/department")
-public class departmentController {
+public class DepartmentController {
 	
 	@Autowired
 	private DepartmentService dService;
@@ -22,10 +20,7 @@ public class departmentController {
 	 */
 	@GetMapping("/departmentList")
 	public String toDepartmentList(Model model) {
-		NumberFormat nfCur = NumberFormat.getCurrencyInstance();
-		
-		model.addAttribute("nfCur", nfCur);
-		model.addAttribute("departmentJoinMembersList", dService.departmentJoinMembersList());
+		model.addAttribute("departmentJoinMembersList" ,dService.departmentJoinMembersList());
 		return "department/departmentList";
 	}
 }

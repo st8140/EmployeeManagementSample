@@ -32,10 +32,10 @@ public class MembersController {
 
 	/**
 	 * 部門別/社員一覧画面へ遷移
-	 *
 	 */
 	@GetMapping("/members/{department_id}/membersList")
 	public String toMembersList(@PathVariable("department_id") Integer department_id, Model model) {
+		//全社員表示
 		model.addAttribute("employeeJoinMembersList", mService.employeeJoinMembersList(department_id));
 		//表示用の課名を取得
 		model.addAttribute("getName", dService.getById(department_id).getDepartment_name());

@@ -3,10 +3,10 @@ package com.example.domain;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -21,16 +21,16 @@ import lombok.NoArgsConstructor;
 @Data
 @Table(name="members")
 @NoArgsConstructor
-@IdClass(MembersPK.class)
+//@IdClass(MembersPK.class)
 public class Members {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Id
-	private Integer employee_id;
-	private Integer department_id;
+	//@Id
+	//private Integer employee_id;
+   //private Integer department_id;
 	
 	private Integer sales;
 	private String district_in_charge;
@@ -41,11 +41,11 @@ public class Members {
 	
 	private boolean retirement;
 	
-	@OneToOne
-	@JoinColumn(name="employee_id", insertable=false, updatable=false)
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="employee_id", insertable=true, updatable=true)
 	private Employee employee;
 	
 	@ManyToOne
-	@JoinColumn(name="department_id", insertable=false, updatable=false)
+	@JoinColumn(name="department_id", insertable=true, updatable=false)
 	private Department department;
 }

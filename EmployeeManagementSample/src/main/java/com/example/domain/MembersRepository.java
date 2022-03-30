@@ -91,23 +91,39 @@ public interface MembersRepository extends JpaRepository<Members, MembersPK>{
 				.collect(Collectors.toList());
 	}
 	
-	/**
-	 * UPDATEクエリ
-	 * @param district_in_charge
-	 * @param sales
-	 * @param customers
-	 * @param updated_at
-	 * @param employee_id
-	 */
-//	@Modifying
 //	@Query(value=
-//			"UPDATE members SET"
-//			+ " district_in_charge = :district_in_charge,"
-//			+ " sales = :sales,"
-//			+ " customers = :customers,"
-//			+ " updated_at = :updated_at"
-//			+ " WHERE employee_id = :employee_id", nativeQuery=true)
-//	void updateMember(@Param("district_in_charge") String district_in_charge,
-//			@Param("sales") Integer sales, @Param("customers") Integer customers, 
-//			@Param("updated_at") Date updated_at, @Param("employee_id") Integer employee_id);
+//			"INSERT ALL"
+//			+ " INTO members("
+//				+ " 'department_id',"
+//				+ " 'sales', "
+//				+ " 'district_in_charge',"
+//				+ " 'customers',"
+//				+ " 'updated_at',"
+//				+ " 'retirement')"
+//			+ " VALUES("
+//				+ " 'department_id',"
+//				+ " 'sales', "
+//				+ " 'district_in_charge',"
+//				+ " 'customers',"
+//				+ " 'updated_at',"
+//				+ " 'retirement')"
+//			+ " INTO employees("
+//				+ " 'employee_name',"
+//				+ " 'gender', "
+//				+ " 'employee_phone',"
+//				+ " 'employee_email',"
+//				+ " 'password',"
+//				+ " 'date_of_entry')"
+//				+ " 'start_date',"
+//				+ " 'end_date')"
+//			+ " VALUES("
+//				+ " ':employee_name',"
+//				+ " ':gender', "
+//				+ " ':employee_phone',"
+//				+ " ':employee_email',"
+//				+ " ':password',"
+//				+ " ':date_of_entry')"
+//				+ " ':start_date',"
+//				+ " ':end_date')"
+//				+ " SELECT * FROM members"
 }

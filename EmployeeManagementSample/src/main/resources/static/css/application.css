@@ -132,3 +132,11 @@ ul.navbar-nav li a:hover {
 	color: gray;
 	border-color: initial !important;
 }
+
+.bg-color {
+	background: #b0c4de;
+}
+
+.thead-color {
+	background: #ffc0cb;
+}

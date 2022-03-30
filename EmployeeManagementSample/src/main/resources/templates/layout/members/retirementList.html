@@ -1,45 +1,17 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	 layout:decorate="~{layout/layout}">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-</head>
-<body>
-	<div layout:fragment="retirementList">
-		<tr id="each-body" th:each="item: ${findRetirementEmployeeList}" 
-			th:classappend="${item.retirement} ?  retirement-color : '' ">							
-			<td align="center" th:text="${item.employee_id}"></td>
-			<td align="center" th:text="${item.employee_name}"></td>
-			<td align="center" th:text="${item.district_in_charge}"></td>
-			<th:block th:if="${item.sales > 100}">
-				<td align="center" th:text=" '&yen;' + ${#numbers.formatInteger(item.sales, 3, 'COMMA')	}"></td>
-			</th:block>
-			<th:block th:unless="${item.sales > 100}">
-				<td align="center" th:text=" '&yen;' + ${item.sales}"></td>
-			</th:block>
-			<td align="center" th:text="${item.customers}"></td>
-			<td align="center" th:text="${item.updated_at}"></td>
-			
-			<!-- 編集・退職ボタン -->	
-			<td align="right" class="text-center">
-				<th:block th:if="${item.retirement == false}">
-					<a th:href="@{/members/__${item.employee_id}__/edit}" class="btn btn-primary">編集</a>
-				</th:block>
-			</td>
-			<td align="right" class="text-center">
-				<th:block th:if="${item.retirement == false}">
-					<form method="post" th:action="@{/members/{dId}/{eId}/retirement(eId=${item.employee_id}, dId=${item.department_id})}">
-						<input type="submit" class="btn btn-danger retirement-btn"
-							 name="retirement" value="退職"/>
-					</form>
-				</th:block>
-				<th:block th:unless="${item.retirement == false}">
-					退職済
-				</th:block>
-			 </td>
-		</tr>
-	</div>
-</body>
-</html>
+<div layout:fragment="retirementList">
+	<tr id="each-body" th:each="item: ${findRetirementEmployeeList}" 
+		th:classappend="${item.retirement} ?  retirement-color : '' ">							
+		<td align="center" th:text="${item.employee_id}"></td>
+		<td align="center" th:text="${item.employee_name}"></td>
+		<td align="center" th:text="${item.district_in_charge}"></td>
+		<th:block th:if="${item.sales > 100}">
+			<td align="center" th:text=" '&yen;' + ${#numbers.formatInteger(item.sales, 3, 'COMMA')	}"></td>
+		</th:block>
+		<th:block th:unless="${item.sales > 100}">
+			<td align="center" th:text=" '&yen;' + ${item.sales}"></td>
+		</th:block>
+		<td align="center" th:text="${item.customers}"></td>
+		<td align="center" th:text="${item.updated_at}"></td>
+		<th:block layout:replace="~{layout/members/otherbtn::otherbtn}"></th:block>
+	</tr>
+</div>

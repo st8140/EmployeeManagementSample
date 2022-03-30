@@ -6,7 +6,7 @@ import java.util.Map;
 import javax.validation.GroupSequence;
 import javax.validation.groups.Default;
 
-import org.springframework.beans.BeanUtils;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,6 +34,9 @@ public class SignupController {
 	@Autowired
 	private EmployeeService eService;
 	
+	@Autowired
+	private ModelMapper modelMapper;
+	
 	@GroupSequence({ Default.class, ValidGroup1.class })
 	interface GroupOrder {}
 	
@@ -52,7 +55,6 @@ public class SignupController {
 	public String postSignup(
 			@ModelAttribute @Validated(GroupOrder.class)  EmployeeForm eForm, 
 			BindingResult result, Model model, Locale locale ) {
-		Employee emp = new Employee();
 		
 		if (result.hasErrors()) {
 			return getSignup(eForm, model, locale);
@@ -60,9 +62,10 @@ public class SignupController {
 			log.info(eForm.toString());
 			
 			//ユーザー登録
+			Employee emp = modelMapper.map(eForm, Employee.class);
 			emp.setStart_date(eForm.getDate_of_entry());
 			emp.setEnd_date(eForm.getDate_of_entry());
-			BeanUtils.copyProperties(eForm, emp);
+			// BeanUtils.copyProperties(eForm, emp);
 			eService.insert(emp);	
 			
 			//ユーザー一覧画面へ遷移

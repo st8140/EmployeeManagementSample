@@ -13,8 +13,8 @@ import lombok.Data;
 public class MembersEditForm {
 
 	private Integer id;
-	private Integer employee_id;
-	private Integer department_id;
+//	private Integer employee_id;
+//	private Integer department_id;
 	
 	@NotNull(message="{sales_check}")
 	private Integer sales;

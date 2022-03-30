@@ -25,18 +25,24 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	
-	//Validation
+	// Validation
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	//Jquery
+	// Jquery
 	implementation 'org.webjars:jquery:3.5.1'
-	//BootStrap
+	// BootStrap
 	implementation 'org.webjars:bootstrap:4.5.3'
-	//webjars-locator
+	// webjars-locator
 	implementation 'org.webjars:webjars-locator:0.40'
-	//font-awesome
+	// font-awesome
 	implementation 'org.webjars:font-awesome:5.13.0'
-	//thymeleaf-layout-dialect
+	// thymeleaf-layout-dialect
 	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+	// ModelMapper
+	implementation 'org.modelmapper.extensions:modelmapper-spring:2.3.9'
+	// datatables
+	implementation 'org.webjars:datatables:1.10.21'
+	// datatables-plugin
+	implementation 'org.webjars:datatables-plugins:1.10.21'
 	
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'

@@ -19,13 +19,11 @@
               </div>
             </div>
 	            
-	        <form method="post"  th:object="${membersEditForm}" th:action="@{/members/{dId}/{eId}/edit(dId=*{department_id}, eId=*{employee_id})}">
+	        <form method="post"  th:object="${membersEditForm}" th:action="@{/members/{dId}/{eId}/edit(dId=*{department.department_id}, eId=*{employee.employee_id})}">
 	          <div class="regist-table"> 
 	                   
 	            <!-- IDをhiddenで送信 -->
 	            <input type="hidden" th:field="*{id}"/>
-	            <input type="hidden" th:field="*{employee_id}" />
-	            <input type="hidden" th:field="*{department_id}" />
 	            <!-- 担当地区 -->
 	            <div class="row pt-2 pb-2 form-group">
 	              <div class="col-4"  th:text="#{district_in_charge}"></div>

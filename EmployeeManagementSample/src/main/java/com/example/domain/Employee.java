@@ -2,12 +2,10 @@ package com.example.domain;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -38,7 +36,7 @@ public class Employee {
 	@DateTimeFormat(pattern="yyyy/MM/dd")
 	private Date end_date;
 	
-	@OneToOne(mappedBy="employee", cascade = CascadeType.ALL)
+//	@OneToOne(mappedBy="employee", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 //	@JoinColumn(name="employee_id",  insertable=false, updatable=false)
-	private Members member;
+//	private Members members;
 }

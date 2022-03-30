@@ -1,12 +1,9 @@
 package com.example.domain;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -22,6 +19,6 @@ public class Department {
 	
 	private String department_name;
 	
-	@OneToMany(mappedBy="department")
-	private List<Members> members;
+//	@OneToMany(mappedBy="department")
+//	private List<Members> members;
 }

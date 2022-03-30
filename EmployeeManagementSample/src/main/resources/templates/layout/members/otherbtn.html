@@ -1,0 +1,19 @@
+<th:block layout:fragment="otherbtn">
+	<!-- 編集・退職ボタン -->	
+	<td align="right" class="text-center">
+		<th:block th:if="${item.retirement == false}">
+			<a th:href="@{/members/{id}/edit(id=${item.employee_id})}" class="btn btn-primary">編集</a>
+		</th:block>
+	</td>
+	<td align="right" class="text-center">
+		<th:block th:if="${item.retirement == false}">
+			<form method="post" th:action="@{/members/{dId}/{eId}/retirement(eId=${item.employee_id}, dId=${item.department_id})}">
+				<input type="submit" class="btn btn-danger retirement-btn"
+					 name="retirement" value="退職"/>
+			</form>
+		</th:block>
+		<th:block th:unless="${item.retirement == false}">
+			退職済
+		</th:block>
+	 </td>
+</th:block>

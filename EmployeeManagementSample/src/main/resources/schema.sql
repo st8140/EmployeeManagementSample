@@ -30,5 +30,5 @@ CREATE TABLE IF NOT EXISTS members(
 	customers INT(100),
 	updated_at DATE,
 	retirement BOOLEAN,
-	PRIMARY KEY(id, employee_id)
+	PRIMARY KEY(id)
 );

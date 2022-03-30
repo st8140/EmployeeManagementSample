@@ -18,11 +18,10 @@ public interface DepartmentRepository extends JpaRepository<Department, Integer>
 	 */
 	@Query(value=
 			" SELECT d.department_id, department_name,"
-			+ " SUM(sales) AS 'sum_sales', COUNT(employee_id) AS 'count_employee', AVG(sales) AS 'avg_sales', retirement "
+			+ " SUM(sales), COUNT(employee_id), AVG(sales), retirement "
 			+ " FROM departments d"
 			+ " LEFT JOIN members m"
 			+ " ON d.department_id = m.department_id"
-			+ " WHERE retirement = 0"
 			+ " GROUP BY d.department_id"
 			+ " ORDER BY d.department_id asc", nativeQuery = true)
 	public List<Object[]> getJoinDatas();

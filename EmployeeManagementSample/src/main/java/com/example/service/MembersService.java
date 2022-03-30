@@ -34,6 +34,14 @@ public class MembersService {
 	} 
 	
 	/**
+	 * 新規複数登録
+	 */
+	@Transactional
+	public void multipleRegistrations(Members members) {
+		mRepository.save(members);
+	}
+	
+	/**
 	 * 更新処理
 	 */
 	@Transactional
@@ -63,22 +71,4 @@ public class MembersService {
 	public List<MembersSummary> findRetirementEmployeeList(Integer department_id) {
 		return mRepository.findRetirementData(department_id);
 	}
-	
-	
-//	@Transactional
-//	public void update(Members member) {
-//		List<Members> membersAll = mRepository.findAll();
-//		for (Members mem : membersAll) {
-//			if (member.getEmployee_id() == mem.getEmployee_id()) {
-//				mRepository.updateMember(
-//						member.getDistrict_in_charge(),
-//						member.getSales(),
-//						member.getCustomers(),
-//						member.getUpdated_at(),
-//						member.getEmployee_id());
-//			} else {
-//				mRepository.save(member);			
-//			}		
-//		}
-//	}
 }

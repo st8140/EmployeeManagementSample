@@ -11,14 +11,14 @@
 	    <h1 class="heading mb-3">社員登録</h1>
 	    <div class="border border-3"></div>
 	      <div class="regist-content">
-	        <form method="post" action="/signup" th:object="${employeeForm}">
+	        <form method="post" action="/signup" th:object="${employeeForm}" id="form">
 	          <div class="regist-table">
 	            
 	            <!-- 氏名 -->
 	            <div class="row pt-2 pb-2 form-group">
 	              <div class="col-4"  th:text="#{employee_name}"></div>
 	              <div class="col-6">
-	              	<input type="text"class="form-control" th:field="*{employee_name}"  th:errorclass="is-invalid"/>
+	              	<input type="text"class="form-control" th:field="*{employee_name}" th:errorclass="is-invalid" />
 	              	<div class="invalid-feedback" th:errors="*{employee_name}"></div>
 	              </div>
 	            </div>
